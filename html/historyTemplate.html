@@ -1,0 +1,44 @@
+<h1>History:</h1>
+<div>
+    <div>Event:
+        <select>
+            <option ng-click="tableSettings.selectedEvent = ''" value="" selected="selected">All</option>
+            <option ng-repeat="event in tableSettings.event" ng-click="tableSettings.selectedEvent = event">
+                {{event}}
+            </option>
+        </select>
+    </div>
+    <div>Requirement:
+        <select>
+            <option ng-click="tableSettings.selectedRequirement = ''" value="" selected="selected">All</option>
+            <option ng-repeat="requirement in tableSettings.requirement"
+                    ng-click="tableSettings.selectedRequirement = requirement">{{requirement}}
+            </option>
+        </select>
+    </div>
+    <div>Component:
+        <select>
+            <option ng-click="tableSettings.selectedComponent = ''" value="" selected="selected">All</option>
+            <option ng-repeat="component in tableSettings.component"
+                    ng-click="tableSettings.selectedComponent = component">{{component}}
+            </option>
+        </select>
+    </div>
+    <button ng-click="refresh()">Refresh</button>
+</div>
+<table class="floatLeft">
+    <tr class="tableTitle">
+        <td ng-click="tableOrder('time')">Time</td>
+        <td ng-click="tableOrder('event')"> Event</td>
+        <td ng-click="tableOrder('testCase.title')">Title</td>
+        <td ng-click="tableOrder('testCase.requirement')">Requirement</td>
+        <td ng-click="tableOrder('testCase.component')">Component</td>
+    </tr>
+    <tr ng-repeat="test in model | orderBy : tableOrderValue : tableOrderReverse" ng-if="showTest(test)">
+        <td> {{test.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td class="tableEvent_{{test.event}}"> {{test.event}}</td>
+        <td>{{test.testCase.title}}</td>
+        <td>{{test.testCase.requirement}}</td>
+        <td>{{test.testCase.component}}</td>
+    </tr>
+</table>

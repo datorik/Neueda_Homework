@@ -1,0 +1,17 @@
+<h1>Now:</h1>
+<table>
+    <tr class="tableTitle">
+        <td>Time</td>
+        <td>Event</td>
+        <td>Title</td>
+        <td>Requirement</td>
+        <td>Component</td>
+    </tr>
+    <tr>
+        <td> {{model.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td class="tableEvent_{{model.event}}"> {{model.event}}</td>
+        <td>{{model.testCase.title}}</td>
+        <td>{{model.testCase.requirement}}</td>
+        <td>{{model.testCase.component}}</td>
+    </tr>
+</table>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <title>My Test App</title>
+
+    <script src="lib/Chart.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/tc-angular-chartjs.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.1/socket.io.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service/dataService.js"></script>
+    <script src="js/controller/historyCtrl.js"></script>
+    <script src="js/controller/liveDataCtrl.js"></script>
+
+    <link rel="stylesheet" href="css/nv.d3.css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<div ng-controller="LiveDataCtrl">
+    <div ng-include="'html/liveTemplate.html'"></div>
+</div>
+
+<br/>
+
+<div ng-controller="HistoryCtrl">
+    <div ng-include="'html/historyTemplate.html'"></div>
+    <div>
+        <canvas class="chart" tc-chartjs-pie chart-data="chartData" height="400" width="400"></canvas>
+    </div>
+</div>
+</body>
+</html>
